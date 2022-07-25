@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "ddda617f-f39b-4359-af18-4ece3c21e360",
 		"name": "Curso_postman1",
+		"description": "Distintos métodos de pruebas usando api de postman echo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13778777"
 	},
@@ -34,7 +35,8 @@
 									"value": "adios"
 								}
 							]
-						}
+						},
+						"description": "Get utilizando parametros"
 					},
 					"response": []
 				},
