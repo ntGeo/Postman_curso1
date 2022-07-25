@@ -1,2 +1,2 @@
-# Postman_curso1
-Distintos espacios de trabajo desarrollados mediante cursos
+# Ejemplos de uso de Postman
+Espacio de trabajo con distintos ejemplos de consulta y pruebas utilizando Postman Echo
