@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1cf083de-e718-43a3-be01-5bc3c7ee4fdd",
+		"_postman_id": "ddda617f-f39b-4359-af18-4ece3c21e360",
 		"name": "Curso_postman1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13778777"
@@ -362,7 +362,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"nombre\": \"{{$randomAlphaNumeric}}\",\r\n    \"cuenta\": \"{{$randomBankAccount}}\",\r\n    \"cantidad\": {{$randomInt}},\r\n    \"fecha\": {{$timestamp}},\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"nombrereal\": \"{{$randomFirstName}}\"\r\n}",
+							"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"nombre\": \"{{$randomAlphaNumeric}}\",\r\n    \"cuenta\": \"{{$randomBankAccount}}\",\r\n    \"cantidad\": {{$randomInt}},\r\n    \"fecha\": {{$timestamp}},\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"nombrereal2\": \"{{$randomFirstName}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -376,6 +376,162 @@
 							],
 							"path": [
 								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metodos de autentificacion",
+			"item": [
+				{
+					"name": "Basic Auth",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "postman",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/basic-auth",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"basic-auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bearer con Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "geo84687",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlhttpbin}}/bearer",
+							"host": [
+								"{{urlhttpbin}}"
+							],
+							"path": [
+								"bearer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuhth1",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "consumerSecret",
+									"value": "D+EdQ-gs$-%@2Nu7",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "RKCGzna7bv9YD57c",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/oauth1",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"oauth1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hawk auth",
+					"request": {
+						"auth": {
+							"type": "hawk",
+							"hawk": [
+								{
+									"key": "authKey",
+									"value": "werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn",
+									"type": "string"
+								},
+								{
+									"key": "authId",
+									"value": "dh37fgj492je",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "sha256",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/auth/hawk",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"auth",
+								"hawk"
 							]
 						}
 					},
