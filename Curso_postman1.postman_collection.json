@@ -38,7 +38,40 @@
 						},
 						"description": "Get utilizando parametros"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "HolaAdios",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://postman-echo.com/get?param1=hola&param2=adios",
+									"protocol": "https",
+									"host": [
+										"postman-echo",
+										"com"
+									],
+									"path": [
+										"get"
+									],
+									"query": [
+										{
+											"key": "param1",
+											"value": "hola"
+										},
+										{
+											"key": "param2",
+											"value": "adios"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"args\": {\n        \"param1\": \"hola\",\n        \"param2\": \"adios\"\n    },\n    \"headers\": {\n        \"x-forwarded-proto\": \"https\",\n        \"x-forwarded-port\": \"443\",\n        \"host\": \"postman-echo.com\",\n        \"x-amzn-trace-id\": \"Root=1-62e01c97-7cbc48213b11091239b69a11\",\n        \"user-agent\": \"PostmanRuntime/7.29.2\",\n        \"accept\": \"*/*\",\n        \"cache-control\": \"no-cache\",\n        \"postman-token\": \"c565dca1-b578-4f63-954c-3bbba3723574\",\n        \"accept-encoding\": \"gzip, deflate, br\"\n    },\n    \"url\": \"https://postman-echo.com/get?param1=hola&param2=adios\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get sin parametros",
@@ -534,6 +567,124 @@
 							"path": [
 								"auth",
 								"hawk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilidades",
+			"item": [
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/status/500",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"status",
+								"500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status con parametos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/status/:id",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"status",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stream",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/stream/5",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"stream",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/delay/4",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"delay",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UTF8",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/encoding/utf8",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"encoding",
+								"utf8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/ip",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"ip"
 							]
 						}
 					},
