@@ -986,6 +986,80 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Cookies",
+			"item": [
+				{
+					"name": "Obtener cookies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/cookies",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir Cookies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/cookies/set?param1=geo&param2=atavales",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"cookies",
+								"set"
+							],
+							"query": [
+								{
+									"key": "param1",
+									"value": "geo"
+								},
+								{
+									"key": "param2",
+									"value": "atavales"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Cokkies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/cookies/delete?param1",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"cookies",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "param1",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
