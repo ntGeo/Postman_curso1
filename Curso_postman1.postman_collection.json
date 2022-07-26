@@ -691,6 +691,301 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Utilidades de fecha y hora",
+			"item": [
+				{
+					"name": "Now",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/now",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"now"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fecha Correcta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/valid?timestamp=2022-07-35",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"valid"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-35"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dia Semana",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/unit?timestamp=2022-07-26&unit=month",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"unit"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26"
+								},
+								{
+									"key": "unit",
+									"value": "month"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sumar Tiempo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/add?timestamp=2022-07-26 10:00:00&hours=20",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"add"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26 10:00:00"
+								},
+								{
+									"key": "hours",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restar Tiempo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/subtract?timestamp=2022-07-26 10:00:00&hours=20",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"subtract"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26 10:00:00"
+								},
+								{
+									"key": "hours",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/start?timestamp=2022-07-26&unit=month",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"start"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26"
+								},
+								{
+									"key": "unit",
+									"value": "month"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partir fecha y hora",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/object?timestamp=2022-07-26 20:50:00",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"object"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26 20:50:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anterior",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/before?timestamp=2022-07-26&target=2022-07-27",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"before"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26"
+								},
+								{
+									"key": "target",
+									"value": "2022-07-27"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posterior",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/after?timestamp=2022-07-26&target=2022-07-27",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"after"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26"
+								},
+								{
+									"key": "target",
+									"value": "2022-07-27"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/between?timestamp=2022-07-26&start=2022-07-25&end=2022-07-28",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"between"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2022-07-26"
+								},
+								{
+									"key": "start",
+									"value": "2022-07-25"
+								},
+								{
+									"key": "end",
+									"value": "2022-07-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bisiesto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/time/leap?timestamp=2020-07-26",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"time",
+								"leap"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2020-07-26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
