@@ -1105,6 +1105,7 @@
 									"\r",
 									"pm.test(\"Resultados del Json\", function () {\r",
 									"    jsonData = pm.response.json();\r",
+									"    console.log(jsonData);\r",
 									"    pm.expect(jsonData.url).to.eql(\"https://postman-echo.com/post\");\r",
 									"    pm.expect(jsonData.data.nombre).to.eql(\"Geo\");\r",
 									"    pm.expect(jsonData.data.apellido).to.eql(\"Atavales\");\r",
@@ -1112,6 +1113,7 @@
 									"\r",
 									"pm.test(\"Resultados2 del Json\", function () {\r",
 									"    jsonData = pm.response.json();\r",
+									"    console.log(jsonData);\r",
 									"    pm.expect(jsonData.json.edad).to.eql(31);\r",
 									"});\r",
 									"\r",
@@ -1144,6 +1146,120 @@
 							],
 							"path": [
 								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Response Time & Equal to a String & Header Check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Respuesta menor a 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El cuerpo de la respuesta es\", function () {\r",
+									"    pm.response.to.have.body('{\"delay\":\"2\"}');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Date is present\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Tiene cadena OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/delay/2",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"delay",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contains String",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"deflate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/get",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Code Name Has a String & Successful POST Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Si aparece la palabra NOT\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El codigo aparece en la lista\", function() {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202,200])\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/status/202",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"status",
+								"202"
 							]
 						}
 					},
