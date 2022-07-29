@@ -1326,6 +1326,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Xml Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonObject = xml2Json(responseBody);\r",
+									"console.log(jsonObject);\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    pm.expect(jsonObject.slideshow.$.title).to.eql(\"Sample Slide Show\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlhttpbin}}/xml",
+							"host": [
+								"{{urlhttpbin}}"
+							],
+							"path": [
+								"xml"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
