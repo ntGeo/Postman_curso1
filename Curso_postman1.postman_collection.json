@@ -1284,6 +1284,17 @@
 									"    pm.expect(true).to.be.true;\r",
 									"    pm.expect([1, 2, 3]).to.include.members([1, 3]);\r",
 									"    pm.expect(jsonData.args).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Más tests\", function () {\r",
+									"    pm.expect(jsonData.json.nombre).to.have.lengthOf(3);\r",
+									"    pm.expect(jsonData.json.nombre).to.have.lengthOf.above(2);\r",
+									"    pm.expect(jsonData.json.nombre).to.have.lengthOf.below(4);\r",
+									"    pm.expect(jsonData.json.nombre).to.have.lengthOf.within(3,20);\r",
+									"    pm.expect(jsonData.json.nombre).to.match(/^Ge/);\r",
+									"    pm.expect(jsonData.json.nombre).to.match(/o/);\r",
+									"    pm.expect(jsonData.json.nombre).to.not.match(/i/);\r",
+									"    pm.expect(jsonData.json.edad).to.be.closeTo(30,5);\r",
 									"});"
 								],
 								"type": "text/javascript"
