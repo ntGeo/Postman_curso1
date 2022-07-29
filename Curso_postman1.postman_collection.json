@@ -1359,6 +1359,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "TXT Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"deny\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlhttpbin}}/robots.txt",
+							"host": [
+								"{{urlhttpbin}}"
+							],
+							"path": [
+								"robots.txt"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
