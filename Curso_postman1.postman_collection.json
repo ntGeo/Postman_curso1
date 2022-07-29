@@ -1430,6 +1430,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Pre-request Script",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const edad = Math.floor((Math.random()*100)+1);\r",
+									"// console.log(edad);\r",
+									"pm.globals.set(\"edadAleatoria\", edad);\r",
+									"\r",
+									"let password = Math.random().toString(36).substr(2,5);\r",
+									"// console.log(\"passwordAleatorio\", password);\r",
+									"pm.globals.set(\"passwordAleatorio\", password);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Rango de edad correcto\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.json.edad).to.eql(pm.globals.get(\"edadAleatoria\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Geo\",\r\n    \"apellido\": \"Atavales\",\r\n    \"edad\": {{edadAleatoria}},\r\n    \"cantidad\":{{$randomInt}},\r\n    \"codigo\": \"{{$guid}}\",\r\n    \"password\": \"{{passwordAleatorio}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlecho}}/post",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
