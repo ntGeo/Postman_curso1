@@ -1445,6 +1445,12 @@
 									"let password = Math.random().toString(36).substr(2,5);\r",
 									"// console.log(\"passwordAleatorio\", password);\r",
 									"pm.globals.set(\"passwordAleatorio\", password);\r",
+									"\r",
+									"//Petición previa en donde se consulta la ip para luego asifnarla a los datos del body\r",
+									"pm.sendRequest(\"https://postman-echo.com/ip\", function (err, response) {\r",
+									"    var jsonData = response.json();\r",
+									"    pm.globals.set(\"ip\", jsonData.ip);\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1470,7 +1476,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Geo\",\r\n    \"apellido\": \"Atavales\",\r\n    \"edad\": {{edadAleatoria}},\r\n    \"cantidad\":{{$randomInt}},\r\n    \"codigo\": \"{{$guid}}\",\r\n    \"password\": \"{{passwordAleatorio}}\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Geo\",\r\n    \"apellido\": \"Atavales\",\r\n    \"edad\": {{edadAleatoria}},\r\n    \"cantidad\":{{$randomInt}},\r\n    \"codigo\": \"{{$guid}}\",\r\n    \"password\": \"{{passwordAleatorio}}\",\r\n    \"ip\": \"{{ip}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1484,6 +1490,159 @@
 							],
 							"path": [
 								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mis Tests",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var misTests = () => {\r",
+									"    pm.test(\"Respuesta OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Tiempo ok\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"MisTests\", misTests.toString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"eval(pm.environment.get(\"MisTests\"))();"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/get",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WorkFlow",
+			"item": [
+				{
+					"name": "Peticion1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/get",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peticion2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"Peticion4\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/get",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peticion3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(null)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/get",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peticion4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(\"Peticion3\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlecho}}/get",
+							"host": [
+								"{{urlecho}}"
+							],
+							"path": [
+								"get"
 							]
 						}
 					},
